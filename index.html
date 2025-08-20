@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lista de Compras</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>🛒 Lista de Compras</h1>
+
+    <form id="form-add" autocomplete="off">
+      <input id="input-name" placeholder="Ex.: Tomate" required />
+      <input id="input-qty" type="number" min="1" value="1" required />
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <section class="toolbar">
+      <div class="filters">
+        <button data-filter="all" class="is-active">Todos</button>
+        <button data-filter="pending">Pendentes</button>
+        <button data-filter="done">Comprados</button>
+      </div>
+      <input id="search" placeholder="Buscar..." />
+      <select id="sort">
+        <option value="created">Ordem de criação</option>
+        <option value="name">Nome (A–Z)</option>
+        <option value="status">Status (pendentes primeiro)</option>
+      </select>
+    </section>
+
+    <ul id="list" aria-live="polite"></ul>
+
+    <footer class="statusbar">
+      <span id="count"></span>
+      <button id="clear-done">Remover comprados</button>
+    </footer>
+  </main>
+
+  <template id="item-template">
+    <li class="item">
+      <label>
+        <input type="checkbox" class="toggle" />
+        <span class="title"></span>
+      </label>
+      <span class="qty"></span>
+      <div class="actions">
+        <button class="edit">Editar</button>
+        <button class="remove">Remover</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
